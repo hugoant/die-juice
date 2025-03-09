@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PCB Surface Measurement</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Die Calculator - by Hugo Antoine</h1>
+  </header>
+  
+  <div id="main-container">
+    <!-- Left panel: Image area -->
+    <div id="left-panel">
+      <div id="canvas-container">
+        <!-- Upload area appears until an image is loaded -->
+        <div id="upload-area">
+          <p>Click or drag &amp; drop your picture here</p>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+        <canvas id="imageCanvas"></canvas>
+      </div>
+    </div>
+    
+    <!-- Right panel: Controls and measurements -->
+    <div id="right-panel">
+      <div id="controls">
+        <button id="calibrateBtn">Calibrate</button>
+        <button id="measureBtn">Measure</button>
+        <button id="panBtn">Pan</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+      <div id="unit-selection">
+        <label for="unitSelect">Unit:</label>
+        <select id="unitSelect">
+          <option value="mm2" selected>mm²</option>
+          <option value="cm2">cm²</option>
+          <option value="in2">in²</option>
+        </select>
+      </div>
+      <div id="zoom-controls">
+        <button id="zoomInBtn">Zoom In</button>
+        <button id="zoomOutBtn">Zoom Out</button>
+      </div>
+      <div id="measurement-list">
+        <h2>Measurements</h2>
+        <ul id="measurements"></ul>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>© 2025 SemiconJuice. All rights reserved.</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

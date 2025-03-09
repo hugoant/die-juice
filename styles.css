@@ -1,0 +1,168 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* No forced overflow hidden so the footer isn't cut off if content overflows */
+  /* overflow: hidden; */
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* so the body spans at least the full viewport height */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Header on top with a known height or just padding */
+header {
+  /* You can keep a fixed height if you like, or just use padding to let text grow. */
+  height: 60px;
+  flex-shrink: 0;
+  line-height: 60px;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+header h1 {
+  margin: 0;  /* remove default margin to avoid extra gaps */
+}
+
+/* Footer at the bottom. Remove forced 'height: 30px' so the text is fully visible */
+footer {
+  flex-shrink: 0;
+  padding: 10px 20px; /* some padding so text is comfortably visible */
+  text-align: center;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* main-container (middle) grows to fill leftover space. */
+#main-container {
+  flex: 1;
+  display: flex;
+}
+
+/* Left panel: 80% width */
+#left-panel {
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right panel: 20% width */
+#right-panel {
+  width: 20%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Canvas container fills the left panel */
+#canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #eee;
+}
+
+/* Canvas fills its container */
+#imageCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Upload area is slightly smaller than the container (10px margin on each side) */
+#upload-area {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(255,255,255,0.8);
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#upload-area.dragover {
+  border-color: #007aff;
+  background-color: rgba(240,248,255,0.8);
+}
+
+/* Right panel internal sections */
+#controls, 
+#unit-selection, 
+#zoom-controls, 
+#measurement-list {
+  width: 100%;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+/* Let the measurement list take remaining space */
+#measurement-list {
+  flex: 1;
+  overflow: auto; /* allows scrolling if the list grows large */
+}
+
+/* Full-width buttons with uniform padding */
+#controls button,
+#zoom-controls button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: #007aff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+/* Active button highlighted with a shiny purple gradient */
+#controls button.active {
+  background: linear-gradient(to right, #8A2BE2, #DA70D6);
+}
+
+/* Unit selection styling */
+#unit-selection select {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Measurement list styling */
+#measurement-list h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#measurement-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#measurement-list li {
+  margin-bottom: 8px;
+}
