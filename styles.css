@@ -1,9 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  /* No forced overflow hidden so the footer isn't cut off if content overflows */
-  /* overflow: hidden; */
-
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* so the body spans at least the full viewport height */
@@ -18,7 +15,6 @@ body {
 
 /* Header on top with a known height or just padding */
 header {
-  /* You can keep a fixed height if you like, or just use padding to let text grow. */
   height: 60px;
   flex-shrink: 0;
   line-height: 60px;
@@ -28,13 +24,13 @@ header {
 }
 
 header h1 {
-  margin: 0;  /* remove default margin to avoid extra gaps */
+  margin: 0;
 }
 
-/* Footer at the bottom. Remove forced 'height: 30px' so the text is fully visible */
+/* Footer at the bottom */
 footer {
   flex-shrink: 0;
-  padding: 10px 20px; /* some padding so text is comfortably visible */
+  padding: 10px 20px;
   text-align: center;
   background-color: #f8f8f8;
   border-top: 1px solid #ccc;
@@ -109,17 +105,37 @@ footer {
 /* Right panel internal sections */
 #controls, 
 #unit-selection, 
-#zoom-controls, 
-#measurement-list {
+#calibration-area,
+#zoom-controls {
   width: 100%;
   margin-bottom: 20px;
   flex-shrink: 0;
 }
 
-/* Let the measurement list take remaining space */
+/* Make the measurement list a fixed scrollable area */
 #measurement-list {
-  flex: 1;
-  overflow: auto; /* allows scrolling if the list grows large */
+  margin-bottom: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#measurement-list h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#measurement-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0; /* Remove default list margin */
+}
+
+/* Each measurement entry */
+#measurement-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Full-width buttons with uniform padding */
@@ -152,17 +168,37 @@ footer {
   margin-top: 5px;
 }
 
-/* Measurement list styling */
-#measurement-list h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+/* Calibration area input styling */
+#calibration-area label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-#measurement-list ul {
-  list-style: none;
-  padding-left: 0;
+#calibration-area input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
-#measurement-list li {
-  margin-bottom: 8px;
+.delete-measure-btn {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  font-size: 14px;
+  flex-shrink: 0;
+  border-radius: 5px;          /* Slightly rounded corners (optional) */
+  transition: background 0.3s; /* Smooth transition */
 }
+
+.delete-measure-btn:hover {
+  background-color: #cc0000;   /* A darker red on hover */
+}
+

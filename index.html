@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Die calculator</title>
+  <title>Die Calculator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,6 +31,7 @@
         <button id="panBtn">🕹️Move</button>
         <button id="resetBtn">🔄Reset</button>
       </div>
+
       <div id="unit-selection">
         <label for="unitSelect">Unit:</label>
         <select id="unitSelect">
@@ -39,10 +40,18 @@
           <option value="in2">in²</option>
         </select>
       </div>
+      
+      <!-- New calibration area input (to edit the calibr. value on the fly) -->
+      <div id="calibration-area">
+        <label for="calibrationInput">Calib. area:</label>
+        <input type="number" id="calibrationInput" step="any" min="0" placeholder="(Set after Calibrate)">
+      </div>
+
       <div id="zoom-controls">
         <button id="zoomInBtn">➕Zoom In</button>
         <button id="zoomOutBtn">➖Zoom Out</button>
       </div>
+
       <div id="measurement-list">
         <h2>Measurements</h2>
         <ul id="measurements"></ul>
